@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabela Periódica</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align:center;
+    }
+
+    .tabela-periodica {
+      display: grid;
+      grid-template-columns: repeat(18, 50px);
+      grid-template-rows: repeat(7, 50px);
+      gap: 0px;
+      padding: 20px;
+    }
+
+    .elemento {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 12px;
+      padding: 5px;
+      font-weight: bold;
+    }
+
+    .h { grid-column: 1; grid-row: 1; }
+    .li { grid-column: 1; grid-row: 2; }
+    .na { grid-column: 1; grid-row: 3; }
+    .k { grid-column: 1; grid-row: 4; }
+    .rb { grid-column: 1; grid-row: 5; }
+    .cs { grid-column: 1; grid-row: 6; }
+    .fr { grid-column: 1; grid-row: 7; }
+    
+    .be { grid-column: 2; grid-row: 2; }
+    .mg { grid-column: 2; grid-row: 3; }
+    .ca { grid-column: 2; grid-row: 4; }
+    .sr { grid-column: 2; grid-row: 5; }
+    .ba { grid-column: 2; grid-row: 6; }
+    .ra { grid-column: 2; grid-row: 7; }
+
+    .sc { grid-column: 3; grid-row: 4; }
+    .y { grid-column: 3; grid-row: 5; }
+    .numero57a71 { grid-column: 3; grid-row: 6; }
+    .numero89a103 { grid-column: 3; grid-row: 7; }
+
+    .ti { grid-column: 4; grid-row: 4; }
+    .zr { grid-column: 4; grid-row: 5; }
+    .hf { grid-column: 4; grid-row: 6; }
+    .rf { grid-column: 4; grid-row: 7; }
+
+    .v { grid-column: 5; grid-row: 4; }
+    .nb { grid-column: 5; grid-row: 5; }
+    .ta { grid-column: 5; grid-row: 6; }
+    .db { grid-column: 5; grid-row: 7; }
+
+    .cr { grid-column: 6; grid-row: 4; }
+    .mo { grid-column: 6; grid-row: 5; }
+    .w { grid-column: 6; grid-row: 6; }
+    .sg { grid-column: 6; grid-row: 7; }
+
+    .mn { grid-column: 7; grid-row: 4; }
+    .tc { grid-column: 7; grid-row: 5; }
+    .re { grid-column: 7; grid-row: 6; }
+    .bh { grid-column: 7; grid-row: 7; }
+
+    .fe { grid-column: 8; grid-row: 4; }
+    .ru { grid-column: 8; grid-row: 5; }
+    .os { grid-column: 8; grid-row: 6; }
+    .hs { grid-column: 8; grid-row: 7; }
+
+    .co { grid-column: 9; grid-row: 4; }
+    .rh { grid-column: 9; grid-row: 5; }
+    .ir { grid-column: 9; grid-row: 6; }
+    .mt { grid-column: 9; grid-row: 7; }
+
+    .ni { grid-column: 10; grid-row: 4; }
+    .pd { grid-column: 10; grid-row: 5; }
+    .pt { grid-column: 10; grid-row: 6; }
+    .ds { grid-column: 10; grid-row: 7; }
+
+    .cu { grid-column: 11; grid-row: 4; }
+    .ag { grid-column: 11; grid-row: 5; }
+    .au { grid-column: 11; grid-row: 6; }
+    .rg { grid-column: 11; grid-row: 7; }
+
+    .zn { grid-column: 12; grid-row: 4; }
+    .cd { grid-column: 12; grid-row: 5; }
+    .hg { grid-column: 12; grid-row: 6; }
+    .cn { grid-column: 12; grid-row: 7; }
+
+    .b { grid-column: 13; grid-row: 2; }
+    .al { grid-column: 13; grid-row: 3; }
+    .ga { grid-column: 13; grid-row: 4; }
+    .in { grid-column: 13; grid-row: 5; }
+    .tl { grid-column: 13; grid-row: 6; }
+    .nh { grid-column: 13; grid-row: 7; }
+
+    .c { grid-column: 14; grid-row: 2; }
+    .si { grid-column: 14; grid-row: 3; }
+    .ge { grid-column: 14; grid-row: 4; }
+    .sn { grid-column: 14; grid-row: 5; }
+    .pb { grid-column: 14; grid-row: 6; }
+    .fl { grid-column: 14; grid-row: 7; }
+
+    .n { grid-column: 15; grid-row: 2; }
+    .p { grid-column: 15; grid-row: 3; }
+    .as { grid-column: 15; grid-row: 4; }
+    .sb { grid-column: 15; grid-row: 5; }
+    .bi { grid-column: 15; grid-row: 6; }
+    .mc { grid-column: 15; grid-row: 7; }
+
+    .o { grid-column: 16; grid-row: 2; }
+    .s { grid-column: 16; grid-row: 3; }
+    .se { grid-column: 16; grid-row: 4; }
+    .te { grid-column: 16; grid-row: 5; }
+    .po { grid-column: 16; grid-row: 6; }
+    .lv { grid-column: 16; grid-row: 7; }
+
+    .f { grid-column: 17; grid-row: 2; }
+    .cl { grid-column: 17; grid-row: 3; }
+    .br { grid-column: 17; grid-row: 4; }
+    .i { grid-column: 17; grid-row: 5; }
+    .at { grid-column: 17; grid-row: 6; }
+    .ts { grid-column: 17; grid-row: 7; }
+
+    .he { grid-column: 18; grid-row: 1; }
+    .ne { grid-column: 18; grid-row: 2; }
+    .ar { grid-column: 18; grid-row: 3; }
+    .kr { grid-column: 18; grid-row: 4; }
+    .xe { grid-column: 18; grid-row: 5; }
+    .rn { grid-column: 18; grid-row: 6; }
+    .og { grid-column: 18; grid-row: 7; }
+
+    .la { grid-column: 4; grid-row: 9; }
+    .ac { grid-column: 4; grid-row: 10; }
+    .ce { grid-column: 5; grid-row: 9; }
+    .th { grid-column: 5; grid-row: 10; }
+    .pr { grid-column: 6; grid-row: 9; }
+    .pa { grid-column: 6; grid-row: 10; }
+    .nd { grid-column: 7; grid-row: 9; }
+    .u { grid-column: 7; grid-row: 10; }
+    .pm { grid-column: 8; grid-row: 9; }
+    .np { grid-column: 8; grid-row: 10; }
+    .sm { grid-column: 9; grid-row: 9; }
+    .pu { grid-column: 9; grid-row: 10; }
+    .eu { grid-column: 10; grid-row: 9; }
+    .am { grid-column: 10; grid-row: 10; }
+    .gd { grid-column: 11; grid-row: 9; }
+    .cm { grid-column: 11; grid-row: 10; }
+    .tb { grid-column: 12; grid-row: 9; }
+    .bk { grid-column: 12; grid-row: 10; }
+    .dy { grid-column: 13; grid-row: 9; }
+    .cf { grid-column: 13; grid-row: 10; }
+    .ho { grid-column: 14; grid-row: 9; }
+    .es { grid-column: 14; grid-row: 10; }
+    .er { grid-column: 15; grid-row: 9; }
+    .fm { grid-column: 15; grid-row: 10; }
+    .tm { grid-column: 16; grid-row: 9; }
+    .md { grid-column: 16; grid-row: 10; }
+    .yb { grid-column: 17; grid-row: 9; }
+    .no { grid-column: 17; grid-row: 10; }
+    .lu { grid-column: 18; grid-row: 9; }
+    .lr { grid-column: 18; grid-row: 10; }
+  </style>
+</head>
+<body>
+  <h1>TABELA PERIÓDICA</h1>
+  <div class="tabela-periodica">
+    <div class="elemento h">
+        1<br>
+        H<br>
+      1.008
+    </div>
+    <div class="elemento he">
+        2<br>      
+        He<br>
+            4.0026
+    </div>
+    <div class="elemento li">
+        3<br>      
+        Li<br>
+        6,94
+    </div>
+    <div class="elemento na">
+    11<br>      
+        Na<br>
+        22,990
+    </div>
+    <div class="elemento k">
+        19<br>      
+            K<br>
+            39,098
+        </div>
+    <div class="elemento rb">
+            37<br>      
+                Rb<br>
+                85,468
+            </div>
+    <div class="elemento cs">
+                55<br>      
+                    Cs<br>
+                    132,91
+                </div>
+     <div class="elemento fr">
+        87<br>      
+        Fr<br>
+        [223] 
+        </div>
+    <!-- coluna 2 -->
+<div class="elemento be">
+        4<br>      
+        Be<br>
+        9,0122 
+        </div>
+<div class="elemento mg">
+            12<br>      
+            Mg<br>
+            24,305
+            </div>
+<div class="elemento ca">
+ 20<br>      
+   Ca<br>
+   40,078(4)
+    </div>
+<div class="elemento sr">
+38<br>      
+ Sr<br>
+  87,62
+   </div>
+<div class="elemento ba">
+    56<br>      
+     Ba<br>
+     137,33
+       </div>
+<div class="elemento ra">
+        88<br>      
+         Ra<br>
+         [226] 
+           </div>
+        <!-- coluna 3 -->
+<div class="elemento sc">
+  21<br>      
+  Sc<br>
+  44,956
+   </div>
+<div class="elemento y">
+    39<br>      
+    Y<br>
+    88,906
+</div>    
+<div class="elemento numero57a71">
+  57 a  71<br>      
+</div>  
+<div class="elemento numero89a103">
+  89 a  103<br>      
+</div>  
+<!-- coluna 4 -->
+<div class="elemento ti">
+  22<br>      
+  Ti<br>
+  47,867
+</div>  
+<div class="elemento zr">
+  40<br>      
+  Zr<br>
+  91,224(2)
+</div> 
+<div class="elemento hf">
+  72<br>      
+  Hf<br>
+  178,486(6) 
+</div> 
+<div class="elemento rf">
+  104<br>      
+  Rf<br>
+  [267] 
+</div>   
+<!-- coluna 5 -->
+<div class="elemento v">
+  23<br>      
+  V<br>
+  50,942
+</div>  
+<div class="elemento nb">
+  41<br>      
+  Nb<br>
+  92,906
+</div> 
+<div class="elemento ta">
+  73<br>      
+  Ta<br>
+  180,95 
+</div> 
+<div class="elemento db">
+  105<br>      
+  Db<br>
+  [268] 
+</div> 
+<!-- coluna 6 -->
+<div class="elemento cr">
+  24<br>      
+  Cr<br>
+  51,996 
+</div> 
+<div class="elemento mo">
+  42<br>      
+  Mo<br>
+  95,95 
+</div> 
+<div class="elemento w">
+  74<br>      
+  W<br>
+  183,84 
+</div> 
+<div class="elemento sg">
+  106<br>      
+  Sg<br>
+  [269] 
+</div> 
+<!-- coluna 7 -->
+<div class="elemento mn">
+  25<br>      
+  Mn<br>
+  54,938 
+</div> 
+<div class="elemento tc">
+  43<br>      
+  Tc<br>
+  [97] 
+</div> 
+<div class="elemento re">
+  75<br>      
+  Re<br>
+  186,21
+</div> 
+<div class="elemento bh">
+  107<br>      
+  Bh<br>
+  [270] 
+</div> 
+<!-- coluna 8 -->
+<div class="elemento fe">
+  26<br>      
+  Fe<br>
+  55,845(2) 
+</div> 
+<div class="elemento ru">
+  44<br>      
+  Ru<br>
+  101,07(2)
+</div> 
+<div class="elemento os">
+  76<br>      
+  Os<br>
+  190,23(3) 
+</div> 
+<div class="elemento hs">
+  108<br>      
+  Hs<br>
+  [269] 
+</div> 
+<!-- coluna 9 -->
+<div class="elemento co">
+  27<br>      
+  Co<br>
+  58,933
+</div> 
+<div class="elemento rh">
+  45<br>      
+  Rh<br>
+  102,91
+</div> 
+<div class="elemento ir">
+  77<br>      
+  Ir<br>
+  192,22
+</div> 
+<div class="elemento mt">
+  109<br>      
+  Mt<br>
+  [277] 
+</div> 
+<!-- coluna 10 -->
+<div class="elemento ni">
+  28<br>      
+  Ni<br>
+  58,693
+</div> 
+<div class="elemento pd">
+  46<br>      
+  Pd<br>
+  106,42
+</div> 
+<div class="elemento pt">
+  78<br>      
+  Pt<br>
+  195,08
+</div> 
+<div class="elemento ds">
+  110<br>      
+  Ds<br>
+  [281] 
+</div> 
+<!-- coluna 11 -->
+<div class="elemento cu">
+  29<br>      
+  Cu<br>
+  63,546(3)
+</div> 
+<div class="elemento ag">
+  47<br>      
+  Ag<br>
+  107,87
+</div> 
+<div class="elemento au">
+  79<br>      
+  Au<br>
+  196,97
+</div> 
+<div class="elemento rg">
+  111<br>      
+  Rg<br>
+  [282] 
+</div> 
+<!-- coluna 12 -->
+<div class="elemento zn">
+  30<br>      
+  Zn<br>
+  65,38(2)
+</div> 
+<div class="elemento cd">
+  48<br>      
+  Cd<br>
+  112,41
+</div> 
+<div class="elemento hg">
+  80<br>      
+  Hg<br>
+  200,59
+</div> 
+<div class="elemento cn">
+  112<br>      
+  Rg<br>
+  [285] 
+</div> 
+<!-- coluna 13 -->
+<div class="elemento b">
+  5<br>      
+  B<br>
+  10,81
+</div> 
+<div class="elemento al">
+  13<br>      
+  Al<br>
+  26,982 
+</div> 
+<div class="elemento ga">
+  31<br>      
+  Ga<br>
+  69,723 
+</div>
+<div class="elemento in">
+  49<br>      
+  In<br>
+  114,82 
+</div>
+<div class="elemento tl">
+  81<br>      
+  Tl<br>
+  204,38
+</div>
+<div class="elemento nh">
+  113<br>      
+  Nh<br>
+  [286] 
+</div>
+<!-- coluna 14 -->
+<div class="elemento c">
+  6<br>      
+  C<br>
+  12,011 
+</div> 
+<div class="elemento si">
+  14<br>      
+  Si<br>
+  28,085 
+</div> 
+<div class="elemento ge">
+  32<br>      
+  Ge<br>
+  72,630(8)
+</div>
+<div class="elemento sn">
+  50<br>      
+  Sn<br>
+  118,71
+</div>
+<div class="elemento pb">
+  82<br>      
+  Pb<br>
+  207,2
+</div>
+<div class="elemento fl">
+  114<br>      
+  Fl<br>
+  [290] 
+</div>
+<!-- coluna 15 -->
+<div class="elemento n">
+  7<br>      
+  N<br>
+  14,007
+</div> 
+<div class="elemento p">
+  15<br>      
+  P<br>
+  30,974 
+</div> 
+<div class="elemento as">
+  33<br>      
+  As<br>
+  74,922
+</div>
+<div class="elemento sb">
+  51<br>      
+  Sb<br>
+  121,76
+</div>
+<div class="elemento bi">
+  83<br>      
+  Bi<br>
+  208,98
+</div>
+<div class="elemento mc">
+  115<br>      
+  Mc<br>
+  [290] 
+</div>
+<!-- coluna 16 -->
+<div class="elemento o">
+  8<br>      
+  O<br>
+  15,999 
+</div> 
+<div class="elemento s">
+  16<br>      
+  S<br>
+  32,06
+</div> 
+<div class="elemento se">
+  34<br>      
+  Se<br>
+  78,971(8) 
+</div>
+<div class="elemento te">
+  52<br>      
+  Te<br>
+  127,60(3)
+</div>
+<div class="elemento po">
+  84<br>      
+  Po<br>
+  [209]
+</div>
+<div class="elemento lv">
+  116<br>      
+  Lv<br>
+  [293] 
+</div>
+<!-- coluna 17 -->
+<div class="elemento f">
+  9<br>      
+  F<br>
+  18,998 
+</div> 
+<div class="elemento cl">
+  17<br>      
+  Cl<br>
+  35,45 
+</div> 
+<div class="elemento br">
+  35<br>      
+  Br<br>
+  79,904  
+</div>
+<div class="elemento i">
+  53<br>      
+  I<br>
+  126,90 
+</div>
+<div class="elemento at">
+  85<br>      
+  At<br>
+  [210]
+</div>
+<div class="elemento ts">
+  117<br>      
+  Ts<br>
+  [294] 
+</div>
+<!-- coluna 18 -->
+<div class="elemento ne">
+  10<br>      
+  Ne<br>
+  20,180
+</div> 
+<div class="elemento ar">
+  18<br>      
+  Ar<br>
+  39,95 
+</div> 
+<div class="elemento kr">
+  36<br>      
+  Kr<br>
+  83,798(2)
+</div>
+<div class="elemento xe">
+  54<br>      
+  Xe<br>
+  131,29 
+</div>
+<div class="elemento rn">
+  86<br>      
+  Rn<br>
+  [222]
+</div>
+<div class="elemento og">
+  118<br>      
+  Og<br>
+  [294] 
+</div>
+<!-- coluna 18 -->
+<div class="elemento la">
+  57<br>      
+  La<br>
+  138,91 
+</div> 
+<div class="elemento ac">
+  89<br>      
+  Ac<br>
+  [227]
+</div> 
+<div class="elemento ce">
+  58<br>      
+  Ce<br>
+  140,12 
+</div> 
+<div class="elemento th">
+  90<br>      
+  Th<br>
+  232,04 
+</div> 
+<div class="elemento pr">
+  59<br>      
+  Pr<br>
+  140,91
+</div> 
+<div class="elemento pa">
+  91<br>      
+  Pa<br>
+  231,04
+</div> 
+<div class="elemento nd">
+  60<br>      
+  Nd<br>
+  144,24
+</div> 
+<div class="elemento u">
+  92<br>      
+  U<br>
+  238,03
+</div> 
+<div class="elemento pm">
+  61<br>      
+  Pm<br>
+  [145]
+</div> 
+<div class="elemento np">
+  93<br>      
+  Np<br>
+  [237]
+</div> 
+<div class="elemento sm">
+  62<br>      
+  Sm<br>
+  150,36(2)
+</div> 
+<div class="elemento pu">
+  94<br>      
+  Pu<br>
+  [244]
+</div> 
+<div class="elemento eu">
+  63<br>      
+  Eu<br>
+  151,96
+</div> 
+<div class="elemento am">
+  95<br>      
+  Am<br>
+  [243] 
+</div> 
+<div class="elemento gd">
+  64<br>      
+  Gd<br>
+  157,25(3)
+</div> 
+<div class="elemento cm">
+  96<br>      
+  Cm<br>
+  [247] 
+</div> 
+<div class="elemento tb">
+  65<br>      
+  Tb<br>
+  158,93
+</div> 
+<div class="elemento bk">
+  97<br>      
+  Bk<br>
+  [247] 
+</div> 
+<div class="elemento dy">
+  66<br>      
+  Dy<br>
+  162,50
+</div> 
+<div class="elemento cf">
+  98<br>      
+  Cf<br>
+  [251] 
+</div> 
+<div class="elemento ho">
+  67<br>      
+  Ho<br>
+  164,93
+</div> 
+<div class="elemento es">
+  99<br>      
+  Es<br>
+  [252] 
+</div> 
+<div class="elemento er">
+  68<br>      
+  Er<br>
+  167,26
+</div> 
+<div class="elemento fm">
+  100<br>      
+  Fm<br>
+  [257] 
+</div> 
+<div class="elemento tm">
+  69<br>      
+  Tm<br>
+  168,93
+</div> 
+<div class="elemento md">
+  101<br>      
+  Md<br>
+  [258] 
+</div> 
+<div class="elemento yb">
+  70<br>      
+  Yb<br>
+  173,05
+</div> 
+<div class="elemento no">
+  102<br>      
+  No<br>
+  [259] 
+</div> 
+<div class="elemento lu">
+  71<br>      
+  Lu<br>
+  174,97
+</div> 
+<div class="elemento lr">
+  103<br>      
+  Lr<br>
+  [262] 
+</div> 
+<!-- Adicione outros elementos aqui -->
+  </div>
+</body>
+</html>
